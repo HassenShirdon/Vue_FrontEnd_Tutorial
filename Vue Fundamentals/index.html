@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Fundamental</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{getMessage()}}</h1>
+        <h4>lucky number is : {{luckyNumber%2==0 ? "even number":"odd number"}}</h4>
+        <h5>{{employee}}</h4>
+         <h2>The random from 1-10 is: {{getRandomNumber()}}</h2>   
+    </div>
+</body>
+<script>
+const {createApp} = Vue 
+
+createApp({
+    setup(){
+const message = "Hello Vue World!";
+let luckyNumber = 3812;
+const employee ={
+    name: "John Doe",
+    age: 30,
+    position: "Software Engineer",
+    salary: 50000,
+   
+}; 
+function getLuckyNumber(){
+    luckyNumber = Math.floor(Math.random() * 10) + 1;
+    console.log("the lucky number is :" + luckyNumber);
+    return luckyNumber;
+}
+
+// Function to generate a random number between 1 and 100
+function getRandomNumber() {
+    return Math.floor(Math.random() * 10) + 1;
+};
+function getMessage() {
+    return message.toLowerCase() ;
+}
+        return {
+            getMessage,
+            luckyNumber,
+            employee,
+            getRandomNumber,
+            getLuckyNumber,
+
+        }
+    }
+}).mount("#app");
+</script>
+
+</html>
